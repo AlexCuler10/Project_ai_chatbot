@@ -11,6 +11,15 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   IdentityPoolId: IDENTITY_POOL_ID
 });
 
+AWS.config.credentials.get(function(err) {
+  if (err) {
+    console.error('Cognito credential error:', err);
+  } else {
+    console.log('Cognito identity ID:', AWS.config.credentials.identityId);
+  }
+});
+
+
 const lexruntime = new AWS.LexRuntime();
 
 function sendMessage() {
